@@ -62,4 +62,8 @@ public class AboutActivity extends ActionBarActivity {
         }
     }
 
+    public void btn_return(View v){
+        this.finish();
+    }
+
 }

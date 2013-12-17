@@ -7,5 +7,12 @@
     <string name="title_activity_about">AboutActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="name">tonghs</string>
+    <string name="description">番茄工作法，让注意力集中更有效\n\n
+        1. 番茄钟不可分割\n\n
+        2. 超过3小时需要再切分\n\n
+        3. 番茄钟不能暂停，只能作废重来\n\n
+        4. 多个短时间番茄钟可合并\n\n
+        5. 不用于假期和休息期的活动</string>
 
 </resources>
