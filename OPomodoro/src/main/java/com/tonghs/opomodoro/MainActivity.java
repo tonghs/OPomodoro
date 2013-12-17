@@ -1,6 +1,9 @@
 package com.tonghs.opomodoro;
 
 import android.graphics.Typeface;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.ActionBarActivity;
@@ -17,18 +20,23 @@ import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.HashMap;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends ActionBarActivity {
     TextView lbl_clock;
     Timer timer;
-    int min = 25;
-    int sec = 0;
+
+    final int MIN = 25;
+    final int SEC = 0;
     final String SPLIT = ":";
     final int STOPPED = 0;
     final int STARTING = 1;
+    int min = MIN;
+    int sec = SEC;
 
+    MediaPlayer mMediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +48,8 @@ public class MainActivity extends ActionBarActivity {
         lbl_clock = (TextView)findViewById(R.id.lbl_clock);
         lbl_clock.setTypeface(tf);
 
+        mMediaPlayer = MediaPlayer.create(this, R.raw.btn);//初始化MediaPlayer
+
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())
@@ -50,7 +60,7 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
+
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
@@ -78,7 +88,7 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
+                                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             return rootView;
         }
@@ -86,6 +96,7 @@ public class MainActivity extends ActionBarActivity {
 
     public void btn_start_stop(View v){
         ImageButton btn = (ImageButton)v;
+        mMediaPlayer.start();//播放声音
         //if stopped
         if (v.getTag().equals("0")){
             //start
@@ -93,12 +104,22 @@ public class MainActivity extends ActionBarActivity {
             timer.schedule(new MyTimerTask(), 0, 1000);
             btn.setTag("1");
             btn.setImageDrawable(getResources().getDrawable(R.drawable.stop));
+
         } else { //if started
             //stop
             timer.cancel();
+            reset();
             btn.setTag("0");
             btn.setImageDrawable(getResources().getDrawable(R.drawable.play));
         }
+
+
+    }
+
+    public void reset(){
+        min = MIN;
+        sec = SEC;
+        lbl_clock.setText(String.format("%02d%s%02d", min, SPLIT, sec));
     }
 
     final Handler handler = new Handler(){
