@@ -24,6 +24,7 @@
         android:paddingBottom="@dimen/vertical_offset"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/lbl_clock"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/btn_margin"

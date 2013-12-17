@@ -1,5 +1,6 @@
 package com.tonghs.opomodoro;
 
+import android.graphics.Typeface;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.os.Build;
 import android.view.Window;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -19,6 +21,11 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //set font family
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/sourcesanspro.ttf");
+        TextView lbl_clock = (TextView)findViewById(R.id.lbl_clock);
+        lbl_clock.setTypeface(tf);
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
