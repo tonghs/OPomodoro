@@ -118,12 +118,14 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void btn_setting(View v){
+        mMediaPlayer.start();//播放声音
         Intent intent = new Intent();
         intent.setClass(this, SettingsActivity.class);
         this.startActivity(intent);
     }
 
     public void btn_about(View v){
+        mMediaPlayer.start();//播放声音
         Intent intent = new Intent();
         intent.setClass(this, AboutActivity.class);
         this.startActivity(intent);
