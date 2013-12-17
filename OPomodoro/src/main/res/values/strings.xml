@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="slogan">注意力集中更有效</string>
+    <string name="app_name">OPomodoro</string>
+    <string name="init_str">25:00</string>
+
+</resources>
