@@ -1,5 +1,6 @@
 package com.tonghs.opomodoro;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -114,6 +115,18 @@ public class MainActivity extends ActionBarActivity {
         }
 
 
+    }
+
+    public void btn_setting(View v){
+        Intent intent = new Intent();
+        intent.setClass(this, SettingsActivity.class);
+        this.startActivity(intent);
+    }
+
+    public void btn_about(View v){
+        Intent intent = new Intent();
+        intent.setClass(this, AboutActivity.class);
+        this.startActivity(intent);
     }
 
     public void reset(){

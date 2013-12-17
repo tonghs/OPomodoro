@@ -54,7 +54,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/bg_color"
-            android:src="@drawable/about"/>
+            android:src="@drawable/about"
+            android:onClick="btn_about"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -63,6 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/bg_color"
-            android:src="@drawable/setting"/>
+            android:src="@drawable/setting"
+            android:onClick="btn_setting"/>
     </LinearLayout>
 </RelativeLayout>
