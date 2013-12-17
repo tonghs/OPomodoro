@@ -1,6 +1,8 @@
 package com.tonghs.opomodoro;
 
 import android.graphics.Typeface;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -15,7 +17,18 @@ import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class MainActivity extends ActionBarActivity {
+    TextView lbl_clock;
+    Timer timer;
+    int min = 25;
+    int sec = 0;
+    final String SPLIT = ":";
+    final int STOPPED = 0;
+    final int STARTING = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +37,7 @@ public class MainActivity extends ActionBarActivity {
 
         //set font family
         Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/sourcesanspro.ttf");
-        TextView lbl_clock = (TextView)findViewById(R.id.lbl_clock);
+        lbl_clock = (TextView)findViewById(R.id.lbl_clock);
         lbl_clock.setTypeface(tf);
 
         if (savedInstanceState == null) {
@@ -76,12 +89,65 @@ public class MainActivity extends ActionBarActivity {
         //if stopped
         if (v.getTag().equals("0")){
             //start
+            timer = new Timer(true);
+            timer.schedule(new MyTimerTask(), 0, 1000);
             btn.setTag("1");
             btn.setImageDrawable(getResources().getDrawable(R.drawable.stop));
         } else { //if started
             //stop
+            timer.cancel();
             btn.setTag("0");
             btn.setImageDrawable(getResources().getDrawable(R.drawable.play));
+        }
+    }
+
+    final Handler handler = new Handler(){
+        public void handleMessage(Message msg) {
+            switch (msg.what){
+                case STARTING:
+                    String text = msg.getData().getString("clock");
+                    lbl_clock.setText(text);
+                    break;
+                case STOPPED:
+                    timer.cancel();
+                    break;
+            }
+
+            super.handleMessage(msg);
+        }
+    };
+
+    class MyTimerTask extends TimerTask{
+        public void run() {
+            Message msg = new Message();
+            String clockText = getClockText();
+            if (clockText != null){
+                msg.what = STARTING;
+                Bundle bundle = new Bundle();
+                bundle.putString("clock", clockText);
+                msg.setData(bundle);
+            } else {
+                msg.what = STOPPED;
+            }
+
+            handler.sendMessage(msg);
+        }
+
+        public String getClockText(){
+            String clockText = "";
+            if (sec == 0){
+                if (min == 0){
+                    timer.cancel();
+                } else {
+                    sec = 59;
+                    min -= 1;
+                }
+            } else {
+                sec -= 1;
+            }
+            clockText = String.format("%02d%s%02d", min, SPLIT, sec);
+
+            return clockText;
         }
     }
 }
