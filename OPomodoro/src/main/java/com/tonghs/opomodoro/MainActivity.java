@@ -23,6 +23,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.tonghs.opomodoro.util.AlertDialog;
+import com.tonghs.opomodoro.util.TipHelper;
 
 import java.util.HashMap;
 import java.util.Timer;
@@ -32,8 +33,8 @@ public class MainActivity extends ActionBarActivity {
     TextView lbl_clock;
     Timer timer;
 
-    final int MIN = 25;
-    final int SEC = 00;
+    final int MIN = 0;
+    final int SEC = 5;
     final String SPLIT = ":";
     final int STOPPED = 0;
     final int STARTING = 1;
@@ -153,6 +154,7 @@ public class MainActivity extends ActionBarActivity {
                 case STOPPED:
                     AlertDialog dialog = new AlertDialog(MainActivity.this);
                     dialog.show();
+                    TipHelper.Vibrate(MainActivity.this, new long[]{0, 80, 80, 80}, false);
                     reset();
                     break;
             }

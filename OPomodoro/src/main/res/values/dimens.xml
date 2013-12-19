@@ -18,4 +18,5 @@
     <dimen name="title_font_size">20dp</dimen>
     <dimen name="slogan_name_split">15dp</dimen>
     <dimen name="hr">1px</dimen>
+    <dimen name="setting_font_size">20dp</dimen>
     </resources>
