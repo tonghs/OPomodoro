@@ -18,6 +18,7 @@
             android:textSize="@dimen/title_font_size"
             android:textColor="@color/font_color"
             android:background="@color/slogan_bg_color"
+            android:textStyle="bold"
             android:gravity="center"
             android:text="@string/setting"/>
         <TextView
@@ -38,6 +39,6 @@
             android:layout_height="@dimen/btn_height"
             android:background="@color/about_bg_color"
             android:src="@drawable/arrow_right"
-            android:onClick="btn_return"/>
+            android:onClick="btn_returnClick"/>
     </LinearLayout>
 </RelativeLayout>

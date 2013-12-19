@@ -4,9 +4,11 @@
     <string name="slogan">Focus effectively</string>
     <string name="app_name">OPomodoro</string>
     <string name="init_str">25:00</string>
-    <string name="about">About</string>
-    <string name="setting">Setting</string>
+    <string name="about">ABOUT</string>
+    <string name="setting">SETTING</string>
     <string name="version">v0.9 beta</string>
+    <string name="feedback">Feedback from user of OPodomoro</string>
+    <string name="sending">Send email...</string>
     <string name="description">番茄工作法\n\n
         1. 番茄钟不可分割\n\n
         2. 超过3小时需要再切分\n\n

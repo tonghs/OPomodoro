@@ -62,7 +62,7 @@ public class SettingsActivity extends ActionBarActivity {
         }
     }
 
-    public void btn_return(View v){
+    public void btn_returnClick(View v){
         this.finish();
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
     }

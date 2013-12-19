@@ -1,5 +1,7 @@
 package com.tonghs.opomodoro;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -62,9 +64,16 @@ public class AboutActivity extends ActionBarActivity {
         }
     }
 
-    public void btn_return(View v){
+    public void btn_returnClick(View v){
         this.finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+    }
+
+    public void btn_mailClick(View v){
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                "mailto", "tonghuashuai@gmail.com", null));
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.feedback));
+        startActivity(Intent.createChooser(emailIntent, getString(R.string.sending)));
     }
 
 }
