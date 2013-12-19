@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tonghs.opomodoro"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="0.9" >
 
     <uses-sdk
         android:minSdkVersion="9"
@@ -25,12 +25,10 @@
         </activity>
         <activity
             android:name="com.tonghs.opomodoro.AboutActivity"
-            android:label="@string/title_activity_about"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.tonghs.opomodoro.SettingsActivity"
-            android:label="@string/title_activity_settings" >
+            android:name="com.tonghs.opomodoro.SettingsActivity">
         </activity>
     </application>
 

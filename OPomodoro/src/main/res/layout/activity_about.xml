@@ -19,8 +19,7 @@
             android:textColor="@color/font_color"
             android:background="@color/slogan_bg_color"
             android:gravity="center"
-            android:textStyle="bold"
-            android:text="About"/>
+            android:text="@string/about"/>
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="@dimen/hr"

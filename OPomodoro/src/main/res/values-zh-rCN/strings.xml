@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="slogan">Focus effectively</string>
+    <string name="slogan">注意力集中更有效</string>
     <string name="app_name">OPomodoro</string>
     <string name="init_str">25:00</string>
-    <string name="about">About</string>
-    <string name="setting">Setting</string>
+    <string name="about">关于</string>
+    <string name="setting">设置</string>
     <string name="version">v0.9 beta</string>
     <string name="description">番茄工作法\n\n
         1. 番茄钟不可分割\n\n
@@ -13,5 +13,6 @@
         3. 番茄钟不能暂停，只能作废重来\n\n
         4. 多个短时间番茄钟可合并\n\n
         5. 不用于假期和休息期的活动</string>
+
 
 </resources>

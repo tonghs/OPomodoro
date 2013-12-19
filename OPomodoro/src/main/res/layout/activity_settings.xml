@@ -19,18 +19,12 @@
             android:textColor="@color/font_color"
             android:background="@color/slogan_bg_color"
             android:gravity="center"
-            android:textStyle="bold"
-            android:text="Setting"/>
+            android:text="@string/setting"/>
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="@dimen/hr"
             android:background="@color/hr_color"/>
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/container_margin"
-            android:textColor="@color/font_color"
-            android:text="@string/description"/>
+
     </LinearLayout>
 
     <LinearLayout
