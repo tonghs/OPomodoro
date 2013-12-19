@@ -33,8 +33,8 @@ public class MainActivity extends ActionBarActivity {
     TextView lbl_clock;
     Timer timer;
 
-    final int MIN = 0;
-    final int SEC = 5;
+    final int MIN = 25;
+    final int SEC = 0;
     final String SPLIT = ":";
     final int STOPPED = 0;
     final int STARTING = 1;
