@@ -48,11 +48,11 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/container_margin"
+        android:layout_marginBottom="@dimen/container_margin"
         android:orientation="horizontal">
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/btn_width"
+            android:layout_height="@dimen/btn_height"
             android:background="@color/bg_color"
             android:src="@drawable/about"
             android:onClick="btn_about"/>
@@ -61,8 +61,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/btn_width"
+            android:layout_height="@dimen/btn_height"
             android:background="@color/bg_color"
             android:src="@drawable/setting"
             android:onClick="btn_setting"/>

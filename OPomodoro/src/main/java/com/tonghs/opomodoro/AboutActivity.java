@@ -64,6 +64,7 @@ public class AboutActivity extends ActionBarActivity {
 
     public void btn_return(View v){
         this.finish();
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
     }
 
 }

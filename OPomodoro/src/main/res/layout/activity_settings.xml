@@ -20,29 +20,11 @@
             android:background="@color/slogan_bg_color"
             android:gravity="center"
             android:textStyle="bold"
-            android:text="About"/>
+            android:text="Setting"/>
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="@dimen/hr"
             android:background="@color/hr_color"/>
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/slogan_padding_top"
-            android:textSize="@dimen/slogan_font_size"
-            android:textColor="@color/font_color"
-            android:background="@color/slogan_bg_color"
-            android:gravity="center"
-            android:text="@string/slogan"/>
-        <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/slogan_name_split"
-            android:paddingBottom="@dimen/slogan_padding_bottom"
-            android:textColor="@color/font_color"
-            android:background="@color/slogan_bg_color"
-            android:gravity="center"
-            android:text="@string/version"/>
         <TextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -61,17 +43,7 @@
             android:layout_width="@dimen/btn_width"
             android:layout_height="@dimen/btn_height"
             android:background="@color/about_bg_color"
-            android:src="@drawable/mail"
-            android:onClick="btn_return"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-        <ImageButton
-            android:layout_width="@dimen/btn_width"
-            android:layout_height="@dimen/btn_height"
-            android:background="@color/about_bg_color"
-            android:src="@drawable/arrow_left"
+            android:src="@drawable/arrow_right"
             android:onClick="btn_return"/>
     </LinearLayout>
 </RelativeLayout>
