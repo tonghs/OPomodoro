@@ -9,5 +9,6 @@
     <string name="version">v0.9 beta</string>
     <string name="feedback">Feedback from user of OPodomoro</string>
     <string name="sending">Send email...</string>
+    <string name="welldone">Well Done</string>
     <string name="description">POMODORO\n\n1. A Pomodoro is indivisible\n\n2. Break down a task that takes more than 3 hours\n\n3. Once a Pomodoro begins, it has to ring\n\n4. Combine tasks that take less than one Pomodoro\n\n5. Should not be used for free time</string>
 </resources>

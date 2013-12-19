@@ -18,8 +18,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.tonghs.opomodoro.util.AlertDialog;
 
 import java.util.HashMap;
 import java.util.Timer;
@@ -30,7 +33,7 @@ public class MainActivity extends ActionBarActivity {
     Timer timer;
 
     final int MIN = 25;
-    final int SEC = 0;
+    final int SEC = 00;
     final String SPLIT = ":";
     final int STOPPED = 0;
     final int STARTING = 1;
@@ -45,7 +48,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         //set font family
-        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/sourcesanspro.ttf");
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/SourceSansPro.ttf");
         lbl_clock = (TextView)findViewById(R.id.lbl_clock);
         lbl_clock.setTypeface(tf);
 
@@ -108,16 +111,13 @@ public class MainActivity extends ActionBarActivity {
 
         } else { //if started
             //stop
-            timer.cancel();
             reset();
-            btn.setTag("0");
-            btn.setImageDrawable(getResources().getDrawable(R.drawable.play));
         }
 
 
     }
 
-    public void btn_setting(View v){
+    public void btn_settingClick(View v){
         mMediaPlayer.start();//播放声音
         Intent intent = new Intent();
         intent.setClass(this, SettingsActivity.class);
@@ -125,7 +125,7 @@ public class MainActivity extends ActionBarActivity {
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
     }
 
-    public void btn_about(View v){
+    public void btn_aboutClick(View v){
         mMediaPlayer.start();//播放声音
         Intent intent = new Intent();
         intent.setClass(this, AboutActivity.class);
@@ -134,9 +134,13 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void reset(){
+        timer.cancel();
+        ImageButton btn = (ImageButton)findViewById(R.id.btn_start_stop);
         min = MIN;
         sec = SEC;
         lbl_clock.setText(String.format("%02d%s%02d", min, SPLIT, sec));
+        btn.setTag("0");
+        btn.setImageDrawable(getResources().getDrawable(R.drawable.play));
     }
 
     final Handler handler = new Handler(){
@@ -147,7 +151,9 @@ public class MainActivity extends ActionBarActivity {
                     lbl_clock.setText(text);
                     break;
                 case STOPPED:
-                    timer.cancel();
+                    AlertDialog dialog = new AlertDialog(MainActivity.this);
+                    dialog.show();
+                    reset();
                     break;
             }
 
@@ -172,10 +178,10 @@ public class MainActivity extends ActionBarActivity {
         }
 
         public String getClockText(){
-            String clockText = "";
+            String clockText = null;
             if (sec == 0){
                 if (min == 0){
-                    timer.cancel();
+                    return null;
                 } else {
                     sec = 59;
                     min -= 1;
