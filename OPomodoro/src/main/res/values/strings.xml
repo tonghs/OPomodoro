@@ -9,11 +9,5 @@
     <string name="version">v0.9 beta</string>
     <string name="feedback">Feedback from user of OPodomoro</string>
     <string name="sending">Send email...</string>
-    <string name="description">番茄工作法\n\n
-        1. 番茄钟不可分割\n\n
-        2. 超过3小时需要再切分\n\n
-        3. 番茄钟不能暂停，只能作废重来\n\n
-        4. 多个短时间番茄钟可合并\n\n
-        5. 不用于假期和休息期的活动</string>
-
+    <string name="description">POMODORO\n\n1. A Pomodoro is indivisible\n\n2. Break down a task that takes more than 3 hours\n\n3. Once a Pomodoro begins, it has to ring\n\n4. Combine tasks that take less than one Pomodoro\n\n5. Should not be used for free time</string>
 </resources>

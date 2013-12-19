@@ -9,11 +9,6 @@
     <string name="version">v0.9 beta</string>
     <string name="feedback">来自 OPodomoro 用户的反馈</string>
     <string name="sending">正在发送...</string>
-    <string name="description">番茄工作法\n\n
-        1. 番茄钟不可分割\n\n
-        2. 超过3小时需要再切分\n\n
-        3. 番茄钟不能暂停，只能作废重来\n\n
-        4. 多个短时间番茄钟可合并\n\n
-        5. 不用于假期和休息期的活动</string>
+    <string name="description">番茄工作法\n\n1. 番茄钟不可分割\n\n2. 超过3小时需要再切分\n\n3. 番茄钟不能暂停，只能作废重来\n\n4. 多个短时间番茄钟可合并\n\n5. 不用于假期和休息期的活动</string>
 
 </resources>
