@@ -10,7 +10,9 @@
     <string name="feedback">Feedback from user of OPodomoro</string>
     <string name="sending">Send email...</string>
     <string name="welldone">Well Done</string>
-    <string name="btn_sound_text">Button Sound</string>
+    <string name="press_btn_sound">Button sound</string>
+    <string name="ring_at_end">Ring at end</string>
+    <string name="vibrate_at_end">Vibrate at end</string>
 
     <string name="description">POMODORO\n\n1. A Pomodoro is indivisible\n\n2. Break down a task that takes more than 3 hours\n\n3. Once a Pomodoro begins, it has to ring\n\n4. Combine tasks that take less than one Pomodoro\n\n5. Should not be used for free time</string>
 </resources>

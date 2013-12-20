@@ -10,7 +10,9 @@
     <string name="feedback">来自 OPodomoro 用户的反馈</string>
     <string name="sending">正在发送...</string>
     <string name="welldone">了不起</string>
-    <string name="btn_sound_text">按键声音</string>
+    <string name="press_btn_sound">按键声音</string>
+    <string name="ring_at_end">结束后响铃</string>
+    <string name="vibrate_at_end">结束后震动</string>
 
     <string name="description">番茄工作法\n\n1. 番茄钟不可分割\n\n2. 超过3小时需要再切分\n\n3. 番茄钟不能暂停，只能作废重来\n\n4. 多个短时间番茄钟可合并\n\n5. 不用于假期和休息期的活动</string>
 

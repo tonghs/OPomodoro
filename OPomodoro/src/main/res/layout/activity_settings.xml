@@ -3,7 +3,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/about_bg_color"
+    android:background="@color/setting_bg_color"
     tools:context=".MainActivity"
     tools:ignore="MergeRootFrame" >
 
@@ -28,16 +28,79 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_margin="@dimen/container_margin"
+            android:layout_margin="@dimen/setting_container_margin"
+            android:background="@drawable/shape"
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:padding="@dimen/setting_container_padding">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/slogan_bg_color"
+                    android:textSize="@dimen/setting_font_size"
+                    android:text="@string/ring_at_end"/>
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"/>
+                <Switch
+                    android:id="@+id/s_ring"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"/>
             </LinearLayout>
-
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/hr"
+                android:background="@color/setting_hr_color"/>
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:padding="@dimen/setting_container_padding">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/slogan_bg_color"
+                    android:textSize="@dimen/setting_font_size"
+                    android:text="@string/vibrate_at_end"/>
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"/>
+                <Switch
+                    android:id="@+id/s_vibrate"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content" />
+            </LinearLayout>
         </LinearLayout>
 
-
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/setting_container_padding"
+            android:background="@drawable/shape"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/setting_container_padding">
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/slogan_bg_color"
+                    android:textSize="@dimen/setting_font_size"
+                    android:text="@string/press_btn_sound"/>
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"/>
+                <Switch
+                    android:id="@+id/s_btn_sound"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -49,7 +112,7 @@
         <ImageButton
             android:layout_width="@dimen/btn_width"
             android:layout_height="@dimen/btn_height"
-            android:background="@color/about_bg_color"
+            android:background="@color/setting_bg_color"
             android:src="@drawable/arrow_right"
             android:onClick="btn_returnClick"/>
     </LinearLayout>
