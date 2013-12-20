@@ -102,7 +102,9 @@ public class MainActivity extends ActionBarActivity {
 
     public void btn_start_stop(View v){
         ImageButton btn = (ImageButton)v;
-        mMediaPlayer.start();//播放声音
+        if (SettingUtil.getSetting(this, SettingUtil.BTN_SOUND)){
+            mMediaPlayer.start();//播放声音
+        }
         //if stopped
         if (v.getTag().equals("0")){
             //start
@@ -113,7 +115,6 @@ public class MainActivity extends ActionBarActivity {
 
         } else { //if started
             //stop
-            timer.cancel();
             reset(R.drawable.play);
             lbl_clock.setText(String.format("%02d%s%02d", min, SPLIT, sec));
         }
@@ -140,6 +141,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void reset(int imgRes){
+        timer.cancel();
         min = MIN;
         sec = SEC;
         ImageButton btn = (ImageButton)findViewById(R.id.btn_start_stop);
@@ -152,7 +154,8 @@ public class MainActivity extends ActionBarActivity {
             String text = msg.getData().getString("clock");
             lbl_clock.setText(text);
             if (msg.what == STOPPED){
-                timer.cancel();
+
+                reset(R.drawable.restart);
                 AlertDialog dialog = new AlertDialog(MainActivity.this);
                 dialog.show();
 
@@ -165,7 +168,6 @@ public class MainActivity extends ActionBarActivity {
                 if (SettingUtil.getSetting(MainActivity.this, SettingUtil.RING_AT_END)){
 
                 }
-                reset(R.drawable.restart);
             }
 
             super.handleMessage(msg);
