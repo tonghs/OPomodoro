@@ -44,6 +44,7 @@ public class MainActivity extends ActionBarActivity {
 
     MediaPlayer mMediaPlayer;
     MediaPlayer mClock;
+    MediaPlayer mRing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +58,7 @@ public class MainActivity extends ActionBarActivity {
 
         mMediaPlayer = MediaPlayer.create(this, R.raw.btn);//初始化MediaPlayer
         mClock = MediaPlayer.create(this, R.raw.tick);//初始化MediaPlayer
+        mRing = MediaPlayer.create(this, R.raw.ring);
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -173,7 +175,7 @@ public class MainActivity extends ActionBarActivity {
 
                 // ring at end
                 if (SettingUtil.getSetting(MainActivity.this, SettingUtil.RING_AT_END)){
-
+                    mRing.start();
                 }
             }
 
