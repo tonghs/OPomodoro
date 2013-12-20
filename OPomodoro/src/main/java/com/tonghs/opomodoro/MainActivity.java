@@ -34,8 +34,8 @@ public class MainActivity extends ActionBarActivity {
     TextView lbl_clock;
     Timer timer;
 
-    final int MIN = 0;
-    final int SEC = 5;
+    final int MIN = 25;
+    final int SEC = 0;
     final String SPLIT = ":";
     final int STOPPED = 0;
     final int STARTING = 1;
@@ -43,6 +43,7 @@ public class MainActivity extends ActionBarActivity {
     int sec = SEC;
 
     MediaPlayer mMediaPlayer;
+    MediaPlayer mClock;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,7 @@ public class MainActivity extends ActionBarActivity {
         lbl_clock.setTypeface(tf);
 
         mMediaPlayer = MediaPlayer.create(this, R.raw.btn);//初始化MediaPlayer
+        mClock = MediaPlayer.create(this, R.raw.tick);//初始化MediaPlayer
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -153,6 +155,11 @@ public class MainActivity extends ActionBarActivity {
         public void handleMessage(Message msg) {
             String text = msg.getData().getString("clock");
             lbl_clock.setText(text);
+
+            if (SettingUtil.getSetting(MainActivity.this, SettingUtil.CLOCK_TICK)){
+                mClock.start();//播放声音
+            }
+
             if (msg.what == STOPPED){
 
                 reset(R.drawable.restart);
@@ -189,7 +196,7 @@ public class MainActivity extends ActionBarActivity {
 
         public int getClockText(){
             String clockText = null;
-            sec -= 1;
+
             if (sec == 0){
                 if (min == 0){
                     return STOPPED;
@@ -197,6 +204,8 @@ public class MainActivity extends ActionBarActivity {
                     sec = 59;
                     min -= 1;
                 }
+            } else {
+                sec -= 1;
             }
 
             return STARTING;

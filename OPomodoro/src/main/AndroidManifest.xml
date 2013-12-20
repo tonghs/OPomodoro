@@ -30,7 +30,8 @@
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.tonghs.opomodoro.SettingsActivity">
+            android:name="com.tonghs.opomodoro.SettingsActivity"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

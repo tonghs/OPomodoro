@@ -33,9 +33,14 @@ public class SettingsActivity extends ActionBarActivity {
         s_vibrate.setTag(SettingUtil.VIBRATE_AT_END);
         s_vibrate.setOnCheckedChangeListener(switchHandler);
 
+        Switch s_tick = (Switch)findViewById(R.id.s_tick);
+        s_tick.setTag(SettingUtil.CLOCK_TICK);
+        s_tick.setOnCheckedChangeListener(switchHandler);
+
         s_btn_sound.setChecked(SettingUtil.getSetting(this, SettingUtil.BTN_SOUND));
         s_ring.setChecked(SettingUtil.getSetting(this, SettingUtil.RING_AT_END));
         s_vibrate.setChecked(SettingUtil.getSetting(this, SettingUtil.VIBRATE_AT_END));
+        s_tick.setChecked(SettingUtil.getSetting(this, SettingUtil.CLOCK_TICK));
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()

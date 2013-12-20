@@ -11,6 +11,7 @@ public class SettingUtil {
     public final static String BTN_SOUND = "btn_sound";
     public final static String RING_AT_END = "ring_at_end";
     public final static String VIBRATE_AT_END = "vibrate_at_end";
+    public final static String CLOCK_TICK = "clock_tick";
 
     public static void setSetting(Context context, String name, boolean b){
         SharedPreferences settings = context.getSharedPreferences(SETTINGS, 0);
