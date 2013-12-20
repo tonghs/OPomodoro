@@ -10,6 +10,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.CompoundButton;
+import android.widget.Switch;
+
+import com.tonghs.opomodoro.util.SettingUtil;
 
 public class SettingsActivity extends ActionBarActivity {
 
@@ -17,6 +21,21 @@ public class SettingsActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+        Switch s_btn_sound = (Switch)findViewById(R.id.s_btn_sound);
+        s_btn_sound.setTag(SettingUtil.BTN_SOUND);
+        s_btn_sound.setOnCheckedChangeListener(switchHandler);
+
+        Switch s_ring = (Switch)findViewById(R.id.s_ring);
+        s_ring.setTag(SettingUtil.RING_AT_END);
+        s_ring.setOnCheckedChangeListener(switchHandler);
+
+        Switch s_vibrate = (Switch)findViewById(R.id.s_vibrate);
+        s_vibrate.setTag(SettingUtil.VIBRATE_AT_END);
+        s_vibrate.setOnCheckedChangeListener(switchHandler);
+
+        s_btn_sound.setChecked(SettingUtil.getSetting(this, SettingUtil.BTN_SOUND));
+        s_ring.setChecked(SettingUtil.getSetting(this, SettingUtil.RING_AT_END));
+        s_vibrate.setChecked(SettingUtil.getSetting(this, SettingUtil.VIBRATE_AT_END));
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -24,6 +43,15 @@ public class SettingsActivity extends ActionBarActivity {
                     .commit();
         }
     }
+
+    public CompoundButton.OnCheckedChangeListener switchHandler = new CompoundButton.OnCheckedChangeListener() {
+
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            String name = buttonView.getTag().toString();
+            SettingUtil.setSetting(SettingsActivity.this, name, isChecked);
+        }
+    };
 
 
     @Override

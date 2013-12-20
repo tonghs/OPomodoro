@@ -23,6 +23,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.tonghs.opomodoro.util.AlertDialog;
+import com.tonghs.opomodoro.util.SettingUtil;
 import com.tonghs.opomodoro.util.TipHelper;
 
 import java.util.HashMap;
@@ -33,8 +34,8 @@ public class MainActivity extends ActionBarActivity {
     TextView lbl_clock;
     Timer timer;
 
-    final int MIN = 25;
-    final int SEC = 0;
+    final int MIN = 0;
+    final int SEC = 5;
     final String SPLIT = ":";
     final int STOPPED = 0;
     final int STARTING = 1;
@@ -112,14 +113,16 @@ public class MainActivity extends ActionBarActivity {
 
         } else { //if started
             //stop
-            reset();
+            timer.cancel();
+            reset(R.drawable.play);
+            lbl_clock.setText(String.format("%02d%s%02d", min, SPLIT, sec));
         }
-
-
     }
 
     public void btn_settingClick(View v){
-        mMediaPlayer.start();//播放声音
+        if (SettingUtil.getSetting(this, SettingUtil.BTN_SOUND)){
+            mMediaPlayer.start();//播放声音
+        }
         Intent intent = new Intent();
         intent.setClass(this, SettingsActivity.class);
         this.startActivity(intent);
@@ -127,36 +130,42 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void btn_aboutClick(View v){
-        mMediaPlayer.start();//播放声音
+        if (SettingUtil.getSetting(this, SettingUtil.BTN_SOUND)){
+            mMediaPlayer.start();//播放声音
+        }
         Intent intent = new Intent();
         intent.setClass(this, AboutActivity.class);
         this.startActivity(intent);
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
     }
 
-    public void reset(){
-        timer.cancel();
-        ImageButton btn = (ImageButton)findViewById(R.id.btn_start_stop);
+    public void reset(int imgRes){
         min = MIN;
         sec = SEC;
-        lbl_clock.setText(String.format("%02d%s%02d", min, SPLIT, sec));
+        ImageButton btn = (ImageButton)findViewById(R.id.btn_start_stop);
         btn.setTag("0");
-        btn.setImageDrawable(getResources().getDrawable(R.drawable.play));
+        btn.setImageDrawable(getResources().getDrawable(imgRes));
     }
 
     final Handler handler = new Handler(){
         public void handleMessage(Message msg) {
-            switch (msg.what){
-                case STARTING:
-                    String text = msg.getData().getString("clock");
-                    lbl_clock.setText(text);
-                    break;
-                case STOPPED:
-                    AlertDialog dialog = new AlertDialog(MainActivity.this);
-                    dialog.show();
+            String text = msg.getData().getString("clock");
+            lbl_clock.setText(text);
+            if (msg.what == STOPPED){
+                timer.cancel();
+                AlertDialog dialog = new AlertDialog(MainActivity.this);
+                dialog.show();
+
+                // vibrate at end
+                if (SettingUtil.getSetting(MainActivity.this, SettingUtil.VIBRATE_AT_END)){
                     TipHelper.Vibrate(MainActivity.this, new long[]{0, 80, 80, 80}, false);
-                    reset();
-                    break;
+                }
+
+                // ring at end
+                if (SettingUtil.getSetting(MainActivity.this, SettingUtil.RING_AT_END)){
+
+                }
+                reset(R.drawable.restart);
             }
 
             super.handleMessage(msg);
@@ -166,34 +175,29 @@ public class MainActivity extends ActionBarActivity {
     class MyTimerTask extends TimerTask{
         public void run() {
             Message msg = new Message();
-            String clockText = getClockText();
-            if (clockText != null){
-                msg.what = STARTING;
-                Bundle bundle = new Bundle();
-                bundle.putString("clock", clockText);
-                msg.setData(bundle);
-            } else {
-                msg.what = STOPPED;
-            }
+            msg.what = getClockText();
+
+            String clockText = String.format("%02d%s%02d", min, SPLIT, sec);
+            Bundle bundle = new Bundle();
+            bundle.putString("clock", clockText);
+            msg.setData(bundle);
 
             handler.sendMessage(msg);
         }
 
-        public String getClockText(){
+        public int getClockText(){
             String clockText = null;
+            sec -= 1;
             if (sec == 0){
                 if (min == 0){
-                    return null;
+                    return STOPPED;
                 } else {
                     sec = 59;
                     min -= 1;
                 }
-            } else {
-                sec -= 1;
             }
-            clockText = String.format("%02d%s%02d", min, SPLIT, sec);
 
-            return clockText;
+            return STARTING;
         }
     }
 }
