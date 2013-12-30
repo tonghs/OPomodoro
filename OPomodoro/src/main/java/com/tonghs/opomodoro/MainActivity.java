@@ -131,7 +131,7 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = new Intent();
         intent.setClass(this, SettingsActivity.class);
         this.startActivity(intent);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.freeze);
     }
 
     public void btn_aboutClick(View v){
@@ -141,7 +141,7 @@ public class MainActivity extends ActionBarActivity {
         Intent intent = new Intent();
         intent.setClass(this, AboutActivity.class);
         this.startActivity(intent);
-        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.freeze);
     }
 
     public void reset(int imgRes){
